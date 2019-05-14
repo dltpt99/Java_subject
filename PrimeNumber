@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+class getPrimeNumber{
+	int limit_first;
+	int limit_second;
+	int prime_no=0;
+	
+	getPrimeNumber(int limit_first , int limit_second)
+	{
+		this.limit_first = limit_first;
+		this.limit_second = limit_second;
+	}
+	
+	void start() 
+	{
+		for(int i=limit_first ; i<=limit_second ; i++)
+		{
+			if(i%10==0) { System.out.println(""); }
+			if( isPrime(i) || i==2 || i==3 )
+			{
+				prime_no++;
+				System.out.print(i+" "); 
+			}
+		}
+		System.out.println("소수의 갯수 : "+prime_no);
+	}
+	
+	boolean isPrime(int num)
+	{
+		for(int i=2; i <= Math.sqrt(num);i++)
+		{
+			if( num%i == 0 ) { return false; }
+		}
+		return true;
+	}
+}
+
+public class PrimeNumber {
+	public static void main(String args[])
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("범위를 입력해주세요 ex) 6~100");
+		getPrimeNumber pn = new getPrimeNumber( sc.nextInt() , sc.nextInt() );
+		
+		
+		pn.start();
+		sc.close();
+		
+	}
+}
